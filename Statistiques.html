@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -224,15 +224,15 @@
         const db = getDatabase(app);
         const auth = getAuth();
 
-        let allData = {}; // Stocker les données globales
+        let allData = {}; // Gemme globale data
 
         function fetchData() {
             const birthdatesRef = ref(db, 'birthdates');
             onValue(birthdatesRef, (snapshot) => {
-                allData = snapshot.val() || {}; // Stocker les données dans une variable globale
-                console.log(allData); // Afficher les données récupérées
-                updateCountries(); // Mettre à jour les pays disponibles
-                updateCards(); // Mettre à jour les cartes avec les données
+                allData = snapshot.val() || {}; // Gemme data i en global variabel
+                console.log(allData); // Vis de hentede data
+                updateCountries(); // Opdater tilgængelige lande
+                updateCards(); // Opdater kort med data
             });
         }
 
@@ -240,13 +240,13 @@
             const countrySelect = document.getElementById('countrySelect');
             const countries = new Set();
 
-            // Récupérer les pays uniques à partir des données
+            // Hent unikke lande fra data
             Object.keys(allData).forEach(userId => {
                 const userData = allData[userId];
-                countries.add(userData.country); // S'assurer que 'country' est une propriété de userData
+                countries.add(userData.country); // Sikre at 'country' er en egenskab i userData
             });
 
-            // Remplir le sélecteur de pays
+            // Udfyld landevælgeren
             countries.forEach(country => {
                 const option = document.createElement('option');
                 option.value = country;
@@ -268,42 +268,42 @@
 
         function updateCards() {
             const grid = document.getElementById('grid');
-            grid.innerHTML = ''; // Effacer le contenu actuel
+            grid.innerHTML = ''; // Ryd nuværende indhold
 
             const selectedCountry = document.getElementById('countrySelect').value;
             const selectedCategory = document.getElementById('categorySelect').value;
 
             if (Object.keys(allData).length === 0) {
-                grid.innerHTML = '<p>Aucune donnée trouvée.</p>';
+                grid.innerHTML = '<p>Ingen data fundet.</p>';
                 return;
             }
 
             const counts = {};
 
-            // Compter par catégorie
+            // Tæl efter kategori
             Object.keys(allData).forEach(userId => {
                 const userData = allData[userId];
                 if (userData.country === selectedCountry || selectedCountry === '') {
                     let key;
                     if (selectedCategory === 'daily') {
-                        key = new Date(userData.date).toLocaleDateString('fr-FR', { weekday: 'long' });
+                        key = new Date(userData.date).toLocaleDateString('da-DK', { weekday: 'long' });
                     } else if (selectedCategory === 'monthly') {
-                        key = new Date(userData.date).toLocaleDateString('fr-FR', { month: 'long' });
+                        key = new Date(userData.date).toLocaleDateString('da-DK', { month: 'long' });
                     } else if (selectedCategory === 'yearly') {
                         key = new Date(userData.date).getFullYear();
                     } else if (selectedCategory === 'gender') {
-                        key = userData.gender; // Pour la catégorie 'gender'
+                        key = userData.gender; // For 'gender' kategorien
                     } else if (selectedCategory === 'age') {
-                        key = calculateAge(userData.date); // Calculer l'âge
+                        key = calculateAge(userData.date); // Beregn alder
                     } else if (selectedCategory === 'population') {
-                        key = userData.country; // Pour la population, utiliser le pays
+                        key = userData.country; // For befolkning, brug land
                     }
 
                     counts[key] = (counts[key] || 0) + 1;
                 }
             });
 
-            // Afficher les cartes
+            // Vis kort
             Object.keys(counts).forEach(key => {
                 const card = document.createElement('div');
                 card.className = 'card small-card';
@@ -311,13 +311,13 @@
                 grid.appendChild(card);
             });
 
-            // Si aucune donnée n'est trouvée
+            // Hvis ingen data er fundet
             if (grid.innerHTML === '') {
-                grid.innerHTML = '<p>Aucune donnée trouvée.</p>';
+                grid.innerHTML = '<p>Ingen data fundet.</p>';
             }
         }
 
-        // Fonction de debounce
+        // Debounce funktion
         function debounce(func, wait) {
             let timeout;
             return function(...args) {
@@ -332,26 +332,26 @@
 
             countrySelect.addEventListener('change', debounce(updateCards, 300));
             categorySelect.addEventListener('change', debounce(updateCards, 300));
-            fetchData(); // Charger les données au démarrage
+            fetchData(); // Indlæs data ved start
 
-            // Ouvrir le modal de soutien
+            // Åbn støttemodal
             document.getElementById('supportBtn').onclick = function() {
                 document.getElementById('supportModal').style.display = 'block';
             };
 
-            // Ouvrir le modal FAQ
+            // Åbn FAQ-modal
             document.getElementById('faqBtn').onclick = function() {
                 document.getElementById('faqModal').style.display = 'block';
             };
 
-            // Fermer le modal
+            // Luk modal
             document.querySelectorAll('.close').forEach(closeButton => {
                 closeButton.onclick = function() {
                     this.closest('.modal').style.display = 'none';
                 };
             });
 
-            // Fermer le modal en cliquant à l'extérieur
+            // Luk modal ved klik udenfor
             window.onclick = function(event) {
                 const modals = document.querySelectorAll('.modal');
                 modals.forEach(modal => {
@@ -361,27 +361,27 @@
                 });
             };
 
-            // Ouvrir le lien PayPal
+            // Åbn PayPal link
             document.getElementById('paypalBtn').onclick = function() {
-                window.location.href = 'https://www.paypal.com/ncp/payment/QN7HEGCSRYJKA';
+                window.location.href = 'https://www.paypal.com/donate/?hosted_button_id=ATEVL4JGUQWGY';
             };
 
-            // Changer la couleur du bouton de soutien chaque seconde
+            // Skift farve på støtteknappen hvert sekund
             const supportButton = document.getElementById('supportBtn');
             let isGreenSupport = false;
 
             setInterval(() => {
-                isGreenSupport = !isGreenSupport; // Alterner la couleur
-                supportButton.style.backgroundColor = isGreenSupport ? 'green' : '#007BFF'; // Changer la couleur
+                isGreenSupport = !isGreenSupport; // Skift farve
+                supportButton.style.backgroundColor = isGreenSupport ? 'green' : '#007BFF'; // Ændr farve
             }, 700);
 
-            // Changer la couleur du bouton PayPal chaque seconde
+            // Skift farve på PayPal-knappen hvert sekund
             const paypalButton = document.getElementById('paypalBtn');
             let isGreenPaypal = false;
 
             setInterval(() => {
-                isGreenPaypal = !isGreenPaypal; // Alterner la couleur
-                paypalButton.style.backgroundColor = isGreenPaypal ? 'green' : '#007BFF'; // Changer la couleur
+                isGreenPaypal = !isGreenPaypal; // Skift farve
+                paypalButton.style.backgroundColor = isGreenPaypal ? 'green' : '#007BFF'; // Ændr farve
             }, 10000);
         });
     </script>
@@ -394,7 +394,7 @@
     </a>
     <div class="copyright-icon">©️</div>
     <a href="Partage.html">
-        <button class="share-button" aria-label="Partager">
+        <button class="share-button" aria-label="Del">
             <i class="fas fa-share-alt"></i>
         </button>
     </a>
@@ -403,50 +403,50 @@
 <div class="divider"></div>
 
 <div class="button-container">
-    <button id="faqBtn" class="button" aria-label="Questions fréquentes">
-        <i class="fas fa-question-circle" style="margin-right: 2px;"></i> Questions
+    <button id="faqBtn" class="button" aria-label="Ofte stillede spørgsmål">
+        <i class="fas fa-question-circle" style="margin-right: 2px;"></i> Spørgsmål
     </button>
-    <button id="supportBtn" class="button" aria-label="Soutien" translate="no">
-        <i class="fas fa-hand-holding-heart" style="margin-right: 5px;"></i> Soutenir
+    <button id="supportBtn" class="button" aria-label="Støtte" translate="no">
+        <i class="fas fa-hand-holding-heart" style="margin-right: 5px;"></i> Støt os
     </button>
 </div>
 
 <div class="divider"></div>
 
 <div class="dashboard">
-    <select class="country-select" aria-label="Sélectionner un pays" id="countrySelect">
-        <option value="">Tous les pays</option>
-        <!-- Les options de pays seront ajoutées dynamiquement -->
+    <select class="country-select" aria-label="Vælg et land" id="countrySelect">
+        <option value="">Alle lande</option>
+        <!-- Landemuligheder tilføjes dynamisk -->
     </select>
 
-    <select class="category-select" aria-label="Sélectionner une catégorie" id="categorySelect">
-        <option value="daily">Naissances par jour</option>
-        <option value="monthly">Naissances par mois</option>
-        <option value="yearly">Naissances par an</option>
-        <option value="gender">Genre</option>
-        <option value="age">Âges</option>
-        <option value="population">Population</option>
+    <select class="category-select" aria-label="Vælg en kategori" id="categorySelect">
+        <option value="daily">Fødsler pr. dag</option>
+        <option value="monthly">Fødsler pr. måned</option>
+        <option value="yearly">Fødsler pr. år</option>
+        <option value="gender">Køn</option>
+        <option value="age">Aldre</option>
+        <option value="population">Befolkning</option>
     </select>
 
     <div class="grid" id="grid">
-        <!-- Les cartes seront générées ici -->
+        <!-- Kort genereres her -->
     </div>
 </div>
 
-<!-- Modal de Soutien -->
+<!-- Støttemodal -->
 <div id="supportModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Merci de soutenir G-Z ! Chaque soutien compte. Grâce à votre aide, nous pouvons continuer à développer ce projet passionnant, créer des analyses innovantes et fournir des statistiques gratuites à un public mondial.</p>
-        <button id="paypalBtn" class="support-button">Soutenir maintenant</button>
+        <p>Tak for at støtte G-Z! Hver støtte tæller. Takket være din hjælp kan vi fortsætte med at udvikle dette spændende projekt, skabe innovative analyser og levere gratis statistikker til et globalt publikum.</p>
+        <button id="paypalBtn" class="support-button">Støt nu</button>
     </div>
 </div>
 
-<!-- Modal de Questions Fréquemment Posées -->
+<!-- Ofte stillede spørgsmål Modal -->
 <div id="faqModal" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        Les statistiques sont mises à jour automatiquement avec chaque envoi dans les tableaux.
+        Statistikkerne opdateres automatisk med hver indsendelse i tabellerne.
     </div>
 </div>
 
