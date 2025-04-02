@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="da">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -245,7 +245,7 @@
     <h1 translate="no">G-Z</h1>
     <div>
       <a href="pagedetraduction.html">
-        <i class="fas fa-language share-icon"></i> <!-- Icône de traduction -->
+        <i class="fas fa-language share-icon"></i> <!-- Ikon for oversættelse -->
       </a>
     </div>
   </header>
@@ -255,10 +255,10 @@
   <div class="button-container">
     <a class="button" href="Faq.html" translate="yes"><i class="fas fa-question-circle"></i>FAQ</a>
     <a class="button" href="Statistiques.html" id="statistiquesButton">
-      <i class="fas fa-chart-bar"></i> Découvrir</a>
-    <a class="button" href="Contact.html"><i class="fas fa-envelope"></i>Contact</a>
-    <a class="button" href="Terms.html"><i class="fas fa-file-contract"></i>Conditions</a>
-    <a class="button" href="Confidentialité.html"><i class="fas fa-file-contract"></i>Confidentialité</a>
+      <i class="fas fa-chart-bar"></i> Opdage</a>
+    <a class="button" href="Contact.html"><i class="fas fa-envelope"></i>Kontakt</a>
+    <a class="button" href="Terms.html"><i class="fas fa-file-contract"></i>Vilkår</a>
+    <a class="button" href="Confidentialité.html"><i class="fas fa-file-contract"></i>Fortrolighed</a>
   </div>
 
   <script>
@@ -269,43 +269,43 @@
 
     setInterval(() => {
       button.style.borderBottom = `4px solid ${colors[index]}`;
-      index = (index + 1) % colors.length; // Cycle à travers les couleurs
-    }, 400); // Change de couleur toutes les secondes
+      index = (index + 1) % colors.length; // Skift mellem farverne
+    }, 400); // Skift farve hvert sekund
   </script>
 
   <div class="divider"></div>
 
   <div class="notification">
-    <span class="notification-text">Découvrons ensemble les secrets de nos générations.</span>
+    <span class="notification-text">Lad os sammen opdage vores generationers hemmeligheder.</span>
     <div class="new-message-badge"></div>
   </div>
 
   <div class="divider"></div>
 
   <div class="footer-title">
-    Rejoignez-nous pour découvrir les secrets de notre génération en quelques clics !
+    Bliv en del af os for at opdage vores generations hemmeligheder med få klik!
   </div>
 
-  <input type="date" class="date-input" id="birthdate" placeholder="Sélectionnez votre date de naissance" min="1900-01-01" max="" />
+  <input type="date" class="date-input" id="birthdate" placeholder="Vælg din fødselsdato" min="1900-01-01" max="" />
   <select class="country-select" id="countrySelect">
-    <option value="" disabled selected>Sélectionnez votre pays de naissance</option>
+    <option value="" disabled selected>Vælg dit fødeland</option>
   </select>
   <p style="text-align: center; color: black; font-size: 0.7em; margin-top: 5px; text-decoration: underline; text-decoration-color: rgb(0, 123, 191);">
-    En soumettant, vous acceptez nos conditions d'utilisation.
+    Ved at indsende accepterer du vores brugsbetingelser.
   </p>
-  <button class="submit-button" type="submit">Soumettre</button>
+  <button class="submit-button" type="submit">Indsend</button>
 
-  <i class="fas fa-redo reset-icon" id="resetButton" title="Réinitialiser"></i>
+  <i class="fas fa-redo reset-icon" id="resetButton" title="Nulstil"></i>
 
   <div class="divider"></div>
 
   <div class="rectangle">
-    <div class="text-line bold" style="font-size: 1em; color: #0056b3;">Comment ça marche ?</div>
-    <div class="text-line"> Deux sélecteurs sont à votre disposition : le premier est un calendrier pour choisir votre date de naissance, et le second est un sélecteur pour votre pays de naissance. Une fois vos sélections effectuées, cliquez sur "Soumettre". Après cela, on vous demandera de préciser votre genre ; cliquez sur cette option pour devenir contributeur. Enfin, cliquez sur le bouton "Découvrir", qui clignote en vert. Vous découvrirez alors deux nouveaux sélecteurs : naviguez selon vos préférences pour explorer les statistiques. </div>
+    <div class="text-line bold" style="font-size: 1em; color: #0056b3;">Hvordan fungerer det?</div>
+    <div class="text-line"> Der er to valgmuligheder til din rådighed: den første er en kalender til at vælge din fødselsdato, og den anden er en vælger til dit fødeland. Når du har foretaget dine valg, klik på "Indsend". Derefter vil du blive bedt om at angive dit køn; klik på denne mulighed for at blive bidragyder. Til sidst, klik på knappen "Opdage", som blinker grønt. Du vil derefter opdage to nye vælgere: naviger efter dine præferencer for at udforske statistikkerne. </div>
   </div>
 
   <div class="text-line" style="text-align: center; color: black;">
-    <span style="color: #007bff;">_____</span> Ne manquez rien <span style="color: #007bff;">_____</span>
+    <span style="color: #007bff;">_____</span> Gå ikke glip af noget <span style="color: #007bff;">_____</span>
   </div>
 
   <footer>
@@ -333,28 +333,28 @@
   <!-- Modal -->
   <div id="genderModal" class="modal">
     <div class="modal-content">
-      <div class="modal-header">Votre genre ?</div>
+      <div class="modal-header">Dit køn?</div>
       
-      <div class="gender-category">Genres binaires</div>
+      <div class="gender-category">Binære køn</div>
       <div class="modal-footer">
-        <button class="close-button gender-option" value="Man">Man</button>
-        <button class="close-button gender-option" value="Woman">Woman</button>
+        <button class="close-button gender-option" value="Man">Mand</button>
+        <button class="close-button gender-option" value="Woman">Kvinde</button>
       </div>
       
-      <div class="gender-category">Genres non-binaires</div>
+      <div class="gender-category">Ikke-binære køn</div>
       <div class="modal-footer">
-        <button class="close-button gender-option" value="Non-binary">Non-binary</button>
-        <button class="close-button gender-option" value="Genderqueer">Genderqueer</button>
-        <button class="close-button gender-option" value="Genderfluid">Genderfluid</button>
-        <button class="close-button gender-option" value="Agender">Agender</button>
+        <button class="close-button gender-option" value="Non-binary">Ikke-binær</button>
+        <button class="close-button gender-option" value="Genderqueer">Kønsqueer</button>
+        <button class="close-button gender-option" value="Genderfluid">Kønsflydende</button>
+        <button class="close-button gender-option" value="Agender">Akøn</button>
       </div>
       
-      <div class="gender-category">Autres identités de genre</div>
+      <div class="gender-category">Andre kønsidentiteter</div>
       <div class="modal-footer">
-        <button class="close-button gender-option" value="Transgender">Transgender</button>
-        <button class="close-button gender-option" value="Two-Spirit">Two-Spirit</button>
-        <button class="close-button gender-option" value="Bigender">Bigender</button>
-        <button class="close-button gender-option" value="Androgyne">Androgyne</button>
+        <button class="close-button gender-option" value="Transgender">Transkønnet</button>
+        <button class="close-button gender-option" value="Two-Spirit">To-åndet</button>
+        <button class="close-button gender-option" value="Bigender">Tokønnet</button>
+        <button class="close-button gender-option" value="Androgyne">Androgyn</button>
       </div>
     </div>
   </div>
@@ -378,24 +378,24 @@
     const database = getDatabase(app);
     const auth = getAuth(app);
 
-    // Authentification anonyme
+    // Anonym autentificering
     signInAnonymously(auth)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log("Utilisateur connecté : ", user.uid);
+        console.log("Bruger logget ind: ", user.uid);
       })
       .catch((error) => {
-        console.error("Erreur lors de la connexion anonyme : ", error);
+        console.error("Fejl ved anonym login: ", error);
       });
 
     const today = new Date().toISOString().split("T")[0];
     document.getElementById("birthdate").setAttribute('max', today);
 
-    // Charger la liste des pays
+    // Indlæs liste over lande
     fetch('https://restcountries.com/v3.1/all')
       .then(response => {
         if (!response.ok) {
-          throw new Error('Erreur réseau : ' + response.status);
+          throw new Error('Netværksfejl: ' + response.status);
         }
         return response.json();
       })
@@ -409,7 +409,7 @@
           countrySelect.appendChild(option);
         });
       })
-      .catch(error => console.error('Erreur lors du chargement des pays :', error));
+      .catch(error => console.error('Fejl ved indlæsning af lande:', error));
 
     let lastSubmittedId = null;
 
@@ -419,16 +419,16 @@
 
       if (birthdate && country) {
         const submitButton = document.querySelector('.submit-button');
-        submitButton.textContent = "Veuillez patienter...";
+        submitButton.textContent = "Vent venligst...";
         submitButton.style.backgroundColor = 'orange';
 
         document.getElementById('genderModal').style.display = 'block';
       } else {
-        alert("Veuillez entrer une date de naissance et sélectionner un pays !");
+        alert("Indtast venligst en fødselsdato og vælg et land!");
       }
     });
 
-    // Ajouter des écouteurs d'événements à tous les boutons d'option de genre
+    // Tilføj event listeners til alle kønsoptionsknapper
     document.querySelectorAll('.gender-option').forEach(button => {
       button.addEventListener('click', function() {
         submitData(this.value);
@@ -450,14 +450,14 @@
 
       newEntryRef.then(() => {
         submitButton.style.backgroundColor = 'green';
-        submitButton.textContent = "Soumis";
+        submitButton.textContent = "Indsendt";
         submitButton.disabled = true;
         document.getElementById('resetButton').style.display = "block";
         document.getElementById('genderModal').style.display = 'none';
       }).catch((error) => {
         submitButton.style.backgroundColor = 'red';
-        submitButton.textContent = "Erreur";
-        console.error("Erreur lors de la soumission : ", error);
+        submitButton.textContent = "Fejl";
+        console.error("Fejl ved indsendelse: ", error);
       });
     }
 
@@ -468,25 +468,25 @@
             document.getElementById('birthdate').value = '';
             document.getElementById('countrySelect').value = '';
             const submitButton = document.querySelector('.submit-button');
-            submitButton.textContent = "Soumettre";
+            submitButton.textContent = "Indsend";
             submitButton.style.backgroundColor = '#007bff';
             submitButton.disabled = false;
             document.getElementById('resetButton').style.display = "none";
           })
           .catch((error) => {
-            console.error("Erreur lors de la réinitialisation des données : ", error);
+            console.error("Fejl ved nulstilling af data: ", error);
           });
       }
     });
 
-    // Fermer le modal en cliquant à l'extérieur
+    // Luk modal ved klik udenfor
     window.onclick = function(event) {
       const modal = document.getElementById('genderModal');
       if (event.target == modal) {
         modal.style.display = "none";
         const submitButton = document.querySelector('.submit-button');
         submitButton.style.backgroundColor = 'red';
-        submitButton.textContent = "Erreur";
+        submitButton.textContent = "Fejl";
       }
     };
   </script>
